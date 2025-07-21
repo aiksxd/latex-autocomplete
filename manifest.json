@@ -1,0 +1,10 @@
+{
+  "id": "latex-autocomplete",
+  "name": "LaTeX Auto Complete",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Provides a matching list for completing of LaTeX formulas",
+  "author": "aiksxd",
+  "authorUrl": "https://github.com/aiksxd",
+  "isDesktopOnly": false
+}
