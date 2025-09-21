@@ -1,0 +1,40 @@
+
+.latex-settings-section {
+    margin-top: 2em;
+    padding-top: 1.5em;
+    border-top: 1px solid var(--background-modifier-border);
+}
+    
+.latex-examples-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+    
+.latex-examples-table th {
+    text-align: left;
+    padding: 8px 10px;
+    background-color: var(--background-primary-alt);
+    border-bottom: 2px solid var(--background-modifier-border);
+}
+    
+.latex-examples-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+    
+.latex-examples-table tr:last-child td {
+    border-bottom: none;
+}
+    
+.latex-settings-error {
+    color: var(--text-error);
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.latex-textarea {
+    width: 100%;
+    resize: vertical;
+    font-family: monospace;
+}

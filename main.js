@@ -600,29 +600,29 @@ module.exports = class LatexAutoCompletePlugin extends Plugin {
         "settings_title": "LaTeX Auto Complete Settings",
         "min_trigger_chars": "Minimal trigger characters",
         "min_trigger_chars_desc": "Show suggestions after typing this many characters",
-        "latex_mappings": "LaTeX Mappings",
+        "latex_mappings": "LaTeX mappings",
         "latex_mappings_desc": "Custom LaTeX keyword mappings (JSON format)",
-        "restore_defaults": "Restore Defaults",
+        "restore_defaults": "Restore defaults",
         "defaults_restored": "Defaults restored successfully",
         "invalid_json": "Invalid JSON: ",
-        "usage_title": "Usage Guide",
-        "usage_point1": "Place cursor inside $$ / $, then type any character to trigger completion",
-        "usage_point2": "Use ↑/↓ keys to navigate suggestions, Enter to apply",
-        "usage_point3": "Press Space to cancel current completion and start new word",
+        "usage_title": "Usage guide",
+        "usage_point1": "Place cursor inside '$$' / '$', then type any character to trigger completion",
+        "usage_point2": "Use '↑/↓' keys to navigate suggestions, 'Enter' to apply",
+        "usage_point3": "Press 'Space' to cancel current completion and start new word",
         "examples_title": "Examples",
         "example_action": "Action",
         "example_effect": "Result",
-        "example1_input": "Place cursor inside $$ / $",
+        "example1_input": "Place cursor inside '$$' / '$'",
         "example1_output": "Enter LaTeX mode",
         "example2_input": "Type 'a'",
         "example2_output": "Show α suggestion",
-        "example3_input": "1. Press Enter",
+        "example3_input": "1. Press 'Enter'",
         "example3_output": "Insert \\alpha",
-        "example4_input": "2. Press Space",
+        "example4_input": "2. Press 'Space'",
         "example4_output": "Cancel completion",
         "plugin_loaded": "LaTeX Auto Complete plugin loaded!",
-        "plugin_unloaded": "LaTeX Auto Complete plugin unloaded",
-        "preview_mappings": "Preview Symbols Mappings",
+        "plugin_unloaded": "'LaTeX Auto Complete' plugin unloaded",
+        "preview_mappings": "Preview symbols mappings",
         "preview_mappings_desc": "Custom preview symbols for LaTeX commands (JSON format)",
         "preview_defaults_restored": "Preview symbols defaults restored successfully",
       },
@@ -636,19 +636,19 @@ module.exports = class LatexAutoCompletePlugin extends Plugin {
         "defaults_restored": "默认设置已成功恢复",
         "invalid_json": "JSON格式错误: ",
         "usage_title": "使用指南",
-        "usage_point1": "输入 $$/$ 进入LaTeX模式，输入任意字符触发补全",
-        "usage_point2": "使用上下键选择建议，按Enter键应用补全",
+        "usage_point1": "输入 '$$' / '$' 进入LaTeX模式，输入任意字符触发补全",
+        "usage_point2": "使用 '↑/↓' 选择建议，按'Enter'键应用补全",
         "usage_point3": "按空格键取消当前单词补全",
         "examples_title": "示例",
         "example_action": "操作",
         "example_effect": "效果",
-        "example1_input": "光标位于 $$/$ 内",
+        "example1_input": "光标位于 '$$' / '$' 内",
         "example1_output": "进入LaTeX模式",
         "example2_input": "输入a",
         "example2_output": "显示α建议",
-        "example3_input": "1.按Enter",
+        "example3_input": "1.按'Enter'",
         "example3_output": "插入\\alpha",
-        "example4_input": "2.按空格",
+        "example4_input": "2.按'空格'",
         "example4_output": "取消补全",
         "plugin_loaded": "LaTeX自动补全插件已加载！",
         "plugin_unloaded": "LaTeX自动补全插件已卸载",
@@ -689,7 +689,6 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
     const t = this.plugin.locale;
     
     containerEl.empty();
-    containerEl.createEl('h2', { text: t.settings_title });
     
     // mininum characters of activating conplete
     new Setting(containerEl)
@@ -728,17 +727,13 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
     
     // textArea css
     textArea.inputEl.rows = 15;
-    textArea.inputEl.style.width = '100%';
-    textArea.inputEl.style.fontFamily = 'monospace';
-    textArea.inputEl.style.resize = 'vertical';
+    textArea.inputEl.addClass('latex-textarea')
     
     // show error
     this.errorDisplay = mappingSetting.descEl.createEl('div', {
       cls: 'latex-settings-error',
       text: this.errorMsg
     });
-    this.errorDisplay.style.color = 'var(--text-error)';
-    this.errorDisplay.style.marginTop = '10px';
     
     // restore button
     mappingSetting.addButton(button => {
@@ -779,18 +774,13 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
       });
     
     previewTextArea.inputEl.rows = 10;
-    previewTextArea.inputEl.style.width = '100%';
-    previewTextArea.inputEl.style.fontFamily = 'monospace';
-    previewTextArea.inputEl.style.resize = 'vertical';
-    
+    previewTextArea.inputEl.addClass('latex-textarea');
     // preview Error
     this.previewErrorDisplay = previewSetting.descEl.createEl('div', {
       cls: 'latex-settings-error',
       text: this.previewErrorMsg
     });
-    this.previewErrorDisplay.style.color = 'var(--text-error)';
-    this.previewErrorDisplay.style.marginTop = '10px';
-    
+
     // Restore default button
     previewSetting.addButton(button => {
       button
@@ -812,7 +802,7 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
     const usageContainer = containerEl.createEl('div', { 
       cls: 'latex-settings-section' 
     });
-    usageContainer.createEl('h3', { text: t.usage_title });
+    new Setting(usageContainer).setName(t.usage_title).setHeading();
     
     const usageList = usageContainer.createEl('ul');
     for (let i = 1; i <= 3; i++) {
@@ -823,8 +813,8 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
     const examplesContainer = containerEl.createEl('div', { 
       cls: 'latex-settings-section' 
     });
-    examplesContainer.createEl('h3', { text: t.examples_title });
-    
+    new Setting(examplesContainer).setName(t.examples_title).setHeading();
+
     const exampleTable = examplesContainer.createEl('table', {
       cls: 'latex-examples-table'
     });
@@ -851,9 +841,6 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
       
       row.createEl('td', { text: example.output });
     });
-    
-    // 添加CSS样式
-    this.addStyles();
   }
   
   displayError() {
@@ -868,45 +855,5 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
       this.previewErrorDisplay.textContent = this.previewErrorMsg;
       this.previewErrorDisplay.style.display = this.previewErrorMsg ? 'block' : 'none';
     }
-  }
-  
-  addStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-      .latex-settings-section {
-        margin-top: 2em;
-        padding-top: 1.5em;
-        border-top: 1px solid var(--background-modifier-border);
-      }
-      
-      .latex-examples-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-      }
-      
-      .latex-examples-table th {
-        text-align: left;
-        padding: 8px 10px;
-        background-color: var(--background-primary-alt);
-        border-bottom: 2px solid var(--background-modifier-border);
-      }
-      
-      .latex-examples-table td {
-        padding: 8px 10px;
-        border-bottom: 1px solid var(--background-modifier-border);
-      }
-      
-      .latex-examples-table tr:last-child td {
-        border-bottom: none;
-      }
-      
-      .latex-settings-error {
-        color: var(--text-error);
-        margin-top: 8px;
-        font-size: 0.9em;
-      }
-    `;
-    this.containerEl.appendChild(style);
   }
 }
