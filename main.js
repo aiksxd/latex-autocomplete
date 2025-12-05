@@ -798,7 +798,7 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
         });
     });
     
-    // 使用说明区域
+    // instruction
     const usageContainer = containerEl.createEl('div', { 
       cls: 'latex-settings-section' 
     });
@@ -809,7 +809,7 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
       usageList.createEl('li', { text: t[`usage_point${i}`] });
     }
     
-    // 示例区域
+    // example
     const examplesContainer = containerEl.createEl('div', { 
       cls: 'latex-settings-section' 
     });
@@ -819,12 +819,12 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
       cls: 'latex-examples-table'
     });
     
-    // 表头
+    // headerRow
     const headerRow = exampleTable.createEl('tr');
     headerRow.createEl('th', { text: t.example_action });
     headerRow.createEl('th', { text: t.example_effect });
     
-    // 示例数据
+    // example of input
     const examples = [
       { input: t.example1_input, output: t.example1_output },
       { input: t.example2_input, output: t.example2_output },
@@ -832,7 +832,7 @@ class LatexAutoCompleteSettingTab extends PluginSettingTab {
       { input: t.example4_input, output: t.example4_output }
     ];
     
-    // 添加示例行
+    // add example
     examples.forEach(example => {
       const row = exampleTable.createEl('tr');
       

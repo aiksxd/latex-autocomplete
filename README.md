@@ -1,5 +1,11 @@
 # latex-autocomplete
-A plugin of obsidian: Provides a matching list for completing of LaTeX formulas
+Custom LaTeX Autocomplete for Obsidian:
+This plugin puts you in control, letting you build a fully personalized autocomplete list for any LaTeX formula.
+
+![obsidianPluginExampleGIF](./docs/obsidianPluginExampleGIF.gif)
+
+All of them you can customi
+![settingImg](./docs/settingImg.png)
 
 ### Usage Guide
 After installation

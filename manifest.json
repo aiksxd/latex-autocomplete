@@ -1,9 +1,9 @@
 {
-  "id": "latex-autocomplete",
-  "name": "LaTeX Auto Complete",
-  "version": "1.1.0",
+  "id": "latex-autocomplete-customizable",
+  "name": "Customizable LaTeX Autocomplete",
+  "version": "1.1.1",
   "minAppVersion": "0.15.0",
-  "description": "Provides a matching list for completing of LaTeX formulas",
+  "description": "Build a personalized autocomplete list for any LaTeX formula.",
   "author": "aiksxd",
   "authorUrl": "https://github.com/aiksxd",
   "isDesktopOnly": false
