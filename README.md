@@ -4,7 +4,7 @@ This plugin puts you in control, letting you build a fully personalized autocomp
 
 ![obsidianPluginExampleGIF](./docs/obsidianPluginExampleGIF.gif)
 
-All of them you can customi
+All of them can be customized in the plugin's settings.
 ![settingImg](./docs/settingImg.png)
 
 ### Usage Guide
